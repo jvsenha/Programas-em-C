@@ -110,11 +110,11 @@ int inserirInicio(NodoCarro LL[], int IA, int FA, int *IL, int *FL, NodoCarro in
         if (*IL == -1)//verificar se esta vazia, -1 por que o IA é zero
             *IL = *FL = IA;
         else if (*IL > IA)
-            *IL -= 1; //como será inserido no inicio
+            *IL -= 1;
         else
         {
             for (int i = *FL; i >= *IL; i--)
-                LL[i + 1] = LL[i];
+                LL[i + 1] = LL[i]; //desloca para o final da lista
             *FL += 1;
         }
         LL[*IL] = infoCarro;
@@ -124,17 +124,18 @@ int inserirInicio(NodoCarro LL[], int IA, int FA, int *IL, int *FL, NodoCarro in
 
 int removerFinal(int *IL, int *FL)
 {
-    if (*IL == -1)
+    if (*IL == -1)//lista vazia
     {
         return 1;
     }
-    else if (*IL == *FL)
+    else if (*IL == *FL)//apenas um elemento da lista
     {
+        //remove o ultimo e deixa a lista vazia
         *IL -= 1;
         *FL -= 1;
     }
     else
-        *FL -= 1;
+        *FL -= 1;//remove o ultimo
     return 0;
 }
 int qtdElementos(int *IL, int *FL)
